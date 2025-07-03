@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="te">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>దీపావళి శుభాకాంక్షలు</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Telugu&display=swap');
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-family: 'Noto Sans Telugu', sans-serif;
+      background: linear-gradient(to bottom, #0d0d0d, #2c003e);
+      color: #fff;
+      text-align: center;
+      padding: 20px 10px;
+      overflow-x: hidden;
+    }
+    .container {
+      max-width: 500px;
+      margin: auto;
+      background: rgba(0,0,0,0.6);
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 0 15px rgba(255, 165, 0, 0.5);
+      position: relative;
+      z-index: 10;
+    }
+    img {
+      width: 100%;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      box-shadow: 0 0 10px #fff;
+    }
+    h1 {
+      font-size: 1.8em;
+      margin-bottom: 10px;
+      color: #ffe082;
+      text-shadow: 0 0 10px #ffcc00, 0 0 20px #ffaa00;
+      animation: glow 1.5s infinite alternate;
+    }
+    @keyframes glow {
+      from { text-shadow: 0 0 10px #ffcc00, 0 0 20px #ffaa00; }
+      to { text-shadow: 0 0 20px #ffcc00, 0 0 30px #ffaa00, 0 0 40px #ffaa00; }
+    }
+    p {
+      font-size: 1em;
+      margin-bottom: 15px;
+    }
+    input[type="text"] {
+      width: 100%;
+      padding: 14px;
+      border-radius: 8px;
+      border: 2px solid #ffcc00;
+      background-color: rgba(255,255,255,0.1);
+      color: white;
+      font-size: 1em;
+      margin-bottom: 15px;
+    }
+    button {
+      width: 100%;
+      background-color: #ff6600;
+      color: white;
+      border: none;
+      padding: 14px;
+      font-size: 1em;
+      border-radius: 8px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    button:hover {
+      background-color: #e65c00;
+    }
+    .link-box {
+      display: none;
+      margin-top: 20px;
+      background: rgba(255,255,255,0.1);
+      padding: 12px;
+      border-radius: 10px;
+      border: 1px dashed #ffcc00;
+    }
+    #generatedLink {
+      display: block;
+      color: #aaffaa;
+      margin-bottom: 10px;
+      font-size: 0.95em;
+      word-wrap: break-word;
+    }
+    .whatsapp-button {
+      display: inline-flex;
+      align-items: center;
+      background: #25D366;
+      padding: 12px;
+      border-radius: 8px;
+      color: #000;
+      font-weight: bold;
+      text-decoration: none;
+      font-size: 1em;
+      width: 100%;
+      justify-content: center;
+    }
+    .whatsapp-button img {
+      width: 24px;
+      height: 24px;
+      margin-right: 8px;
+    }
+    .fireworks {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
+    }
+    .firework {
+      position: absolute;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: white;
+      opacity: 0;
+      animation: explode 1s ease-out forwards;
+    }
+    @keyframes explode {
+      0% { transform: scale(0); opacity: 1; }
+      20% { transform: scale(1); opacity: 1; }
+      100% { transform: scale(0); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="fireworks" id="fireworksContainer"></div>
+  <div class="container">
+    <img src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExdDA1eXl0MmxydDJlZmFjZGYxOGF4aXAxY2U3OGJieG1kMHBjbzMwbSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/ErwOniUoUCjUCteUln/giphy.gif" alt="లక్ష్మీ దేవి" />
+    <h1 id="mainHeading">దీపావళి శుభాకాంక్షలు</h1>
+    <p id="subText">మీ పేరు టైప్ చేసి మీ స్నేహితులకు పంపండి!</p>
+
+    <input type="text" id="nameInput" placeholder="మీ పేరు రాయండి" />
+    <button onclick="generateLink()">సరే</button>
+
+    <div class="link-box" id="linkBox">
+      <span id="generatedLink"></span>
+      <a href="#" class="whatsapp-button" id="whatsappBtn" onclick="shareWhatsApp(event)">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" />
+        వాట్సాప్‌లో షేర్ చేయండి
+      </a>
+    </div>
+  </div>
+
+  <script>
+    const fireworksContainer = document.getElementById("fireworksContainer");
+
+    function createFirework(x, y) {
+      const colors = ['#FFD700', '#FF4500', '#00FF7F', '#1E90FF', '#DA70D6'];
+      const count = 25;
+      const radius = 70;
+      for (let i = 0; i < count; i++) {
+        const p = document.createElement('div');
+        p.className = 'firework';
+        const c = colors[Math.floor(Math.random() * colors.length)];
+        p.style.backgroundColor = c;
+        fireworksContainer.appendChild(p);
+        p.style.left = `${x}px`;
+        p.style.top = `${y}px`;
+        const angle = Math.random() * 2 * Math.PI;
+        const distance = Math.random() * radius;
+        const tx = x + distance * Math.cos(angle);
+        const ty = y + distance * Math.sin(angle);
+        p.animate([
+          { transform: 'translate(0,0)', opacity: 1, boxShadow: `0 0 10px ${c}` },
+          { transform: `translate(${tx - x}px, ${ty - y}px)`, opacity: 0 }
+        ], { duration: 1000, fill: 'forwards' });
+        setTimeout(() => p.remove(), 1000);
+      }
+    }
+
+    function launchFireworks() {
+      for (let i = 0; i < 3; i++) {
+        const x = Math.random() * window.innerWidth;
+        const y = Math.random() * window.innerHeight * 0.7;
+        setTimeout(() => createFirework(x, y), i * 300);
+      }
+    }
+
+    setInterval(launchFireworks, 3000);
+    window.onload = () => {
+      launchFireworks();
+      const params = new URLSearchParams(window.location.search);
+      const fromName = params.get("from");
+      if (fromName) {
+        const safeName = decodeURIComponent(fromName);
+        document.getElementById("mainHeading").textContent = `దీపావళి శుభాకాంక్షలు ${safeName} నుండి`;
+        document.getElementById("subText").textContent = `మీకు ${safeName} తరఫున దీపావళి శుభాకాంక్షలు! మీరు కూడా మీ పేరుతో పంచుకోండి.`;
+      }
+    };
+
+    function generateLink() {
+      const name = document.getElementById("nameInput").value.trim();
+      if (!name) {
+        alert("మీ పేరు టైప్ చేయండి.");
+        return;
+      }
+      const baseUrl = window.location.origin + window.location.pathname;
+      const finalLink = `${baseUrl}?from=${encodeURIComponent(name)}`;
+      document.getElementById("generatedLink").textContent = finalLink;
+      document.getElementById("linkBox").style.display = "block";
+      document.getElementById("whatsappBtn").href = `https://wa.me/?text=దీపావళి శుభాకాంక్షలు! ఈ లింక్ ఓపెన్ చేయండి: ${finalLink}`;
+    }
+
+    function shareWhatsApp(event) {
+      const link = document.getElementById("generatedLink").textContent;
+      const text = `దీపావళి శుభాకాంక్షలు! ఈ లింక్ ఓపెన్ చేయండి: ${link}`;
+      if (navigator.share) {
+        event.preventDefault();
+        navigator.share({ title: "దీపావళి శుభాకాంక్షలు", text, url: link }).catch(() => {
+          window.open(`https://wa.me/?text=${encodeURIComponent(text)}`, "_blank");
+        });
+      }
+    }
+  </script>
+</body>
+</html>

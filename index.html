@@ -6,11 +6,10 @@
     <title>దీపావళి శుభాకాంక్షలు</title>
     <style>
         :root {
-            --primary: #FFD700;
-            --secondary: #FF5733;
-            --accent: #C70039;
-            --dark: #1A1A2E;
-            --light: #FFF5E4;
+            --gold: #FFD700;
+            --orange: #FFA500;
+            --red: #FF4500;
+            --dark-bg: #1a0d00;
         }
         
         * {
@@ -20,55 +19,51 @@
         }
         
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--dark);
-            color: var(--primary);
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--gold);
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             padding: 20px;
-            position: relative;
             overflow-x: hidden;
+            position: relative;
         }
         
         .container {
-            max-width: 600px;
             width: 100%;
+            max-width: 500px;
             text-align: center;
             z-index: 10;
-            background-color: rgba(26, 26, 46, 0.8);
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 0 30px rgba(255, 215, 0, 0.3);
-            border: 1px solid var(--primary);
+            position: relative;
         }
         
         h1 {
             font-size: 2.5rem;
             margin-bottom: 20px;
-            text-shadow: 0 0 10px var(--secondary);
+            text-shadow: 0 0 10px var(--orange), 0 0 20px var(--red);
             animation: glow 2s infinite alternate;
-            color: var(--primary);
+            color: var(--gold);
         }
         
         @keyframes glow {
             from {
-                text-shadow: 0 0 10px var(--secondary);
+                text-shadow: 0 0 5px var(--orange);
             }
             to {
-                text-shadow: 0 0 20px var(--accent), 0 0 30px var(--secondary);
+                text-shadow: 0 0 15px var(--orange), 0 0 25px var(--red);
             }
         }
         
         .laxmi-img {
-            width: 100%;
-            max-width: 300px;
-            height: auto;
+            width: 280px;
+            height: 280px;
+            object-fit: contain;
             border-radius: 10px;
-            margin: 20px 0;
-            box-shadow: 0 0 25px var(--primary);
+            margin: 20px auto;
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
             animation: float 3s ease-in-out infinite;
         }
         
@@ -85,140 +80,108 @@
             font-size: 1.2rem;
             margin: 15px 0;
             line-height: 1.6;
-            color: var(--light);
         }
         
-        .name-form {
+        .name-input {
             margin: 25px 0;
+            width: 100%;
         }
         
-        .input-group {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 15px;
-        }
-        
-        input[type="text"] {
-            padding: 12px 20px;
+        input {
             width: 100%;
             max-width: 300px;
-            border: 2px solid var(--primary);
-            border-radius: 50px;
-            background-color: rgba(255, 255, 255, 0.1);
+            padding: 12px 15px;
+            border: 2px solid var(--gold);
+            border-radius: 25px;
+            background-color: rgba(0, 0, 0, 0.3);
             color: white;
             font-size: 1rem;
+            margin-bottom: 15px;
             text-align: center;
             outline: none;
-            transition: all 0.3s;
         }
         
-        input[type="text"]:focus {
-            border-color: var(--accent);
-            box-shadow: 0 0 15px var(--secondary);
-        }
-        
-        .btn {
-            padding: 12px 30px;
-            background: linear-gradient(45deg, var(--secondary), var(--accent));
+        button {
+            background: linear-gradient(to right, var(--orange), var(--red));
             color: white;
             border: none;
-            border-radius: 50px;
+            padding: 12px 25px;
+            border-radius: 25px;
             font-size: 1rem;
             font-weight: bold;
             cursor: pointer;
+            margin: 10px 5px;
             transition: all 0.3s;
-            box-shadow: 0 5px 15px rgba(199, 0, 57, 0.4);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
         }
         
-        .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(199, 0, 57, 0.6);
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
         }
         
-        .btn:active {
-            transform: translateY(1px);
+        button:active {
+            transform: translateY(0);
         }
         
         .share-section {
-            margin-top: 30px;
+            margin-top: 20px;
             display: none;
+            width: 100%;
         }
         
         .share-link {
-            word-break: break-all;
-            background-color: rgba(255, 255, 255, 0.1);
+            background-color: rgba(0, 0, 0, 0.3);
             padding: 15px;
             border-radius: 10px;
-            margin: 15px 0;
-            color: var(--light);
-            border: 1px dashed var(--primary);
+            word-break: break-all;
+            margin-bottom: 20px;
+            border: 1px dashed var(--gold);
         }
         
         .whatsapp-btn {
+            background: #25D366;
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
-            padding: 12px 25px;
-            background-color: #25D366;
-            color: white;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: bold;
-            margin-top: 15px;
-            transition: all 0.3s;
-        }
-        
-        .whatsapp-btn:hover {
-            background-color: #128C7E;
-            transform: translateY(-3px);
+            padding: 10px 20px;
         }
         
         .whatsapp-btn img {
             width: 24px;
             height: 24px;
+            margin-right: 10px;
         }
         
-        /* Fireworks */
         .firework {
             position: absolute;
             width: 5px;
             height: 5px;
             border-radius: 50%;
-            box-shadow: 0 0 10px 5px var(--primary);
-            animation: explode 3s ease-out infinite;
+            box-shadow: 0 0 10px 5px;
+            animation: explode 1s ease-out forwards;
             opacity: 0;
             z-index: 1;
         }
         
         @keyframes explode {
             0% {
-                transform: translate(0, 0);
-                width: 5px;
-                height: 5px;
+                transform: scale(0);
                 opacity: 1;
             }
             100% {
-                transform: translate(var(--tx), var(--ty));
-                width: 0;
-                height: 0;
+                transform: scale(20);
                 opacity: 0;
             }
         }
         
-        /* Responsive adjustments */
-        @media (max-width: 600px) {
+        @media (max-width: 480px) {
             h1 {
                 font-size: 2rem;
             }
-            
-            .container {
-                padding: 20px;
-            }
-            
-            .message {
-                font-size: 1rem;
+            .laxmi-img {
+                width: 220px;
+                height: 220px;
             }
         }
     </style>
@@ -227,24 +190,24 @@
     <div class="container">
         <h1 id="greeting">దీపావళి శుభాకాంక్షలు</h1>
         
-        <img src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExdDA1eXl0MmxydDJlZmFjZGYxOGF4aXAxY2U3OGJieG1kMHBjbzMwbSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/ErwOniUoUCjUCteUln/giphy.gif" alt="లక్ష్మీ దేవి యానిమేషన్" class="laxmi-img">
+        <p class="message">శ్రీ మహాలక్ష్మి దేవి మీకు సంపద, సుఖశాంతులు ప్రసాదించాలని కోరుకుంటూ...</p>
         
-        <p class="message">లక్ష్మీ దేవి మీకు సంపద, సుఖశాంతులు ప్రసాదించాలని ప్రార్థిస్తున్నాము!</p>
+        <img src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExdDA1eXl0MmxydDJlZmFjZGYxOGF4aXAxY2U3OGJieG1kMHBjbzMwbSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/ErwOniUoUCjUCteUln/giphy.gif" alt="లక్ష్మీ దేవి" class="laxmi-img">
         
-        <div class="name-form" id="nameForm">
-            <div class="input-group">
-                <input type="text" id="userName" placeholder="మీ పేరు నమోదు చేయండి">
-                <button class="btn" onclick="generateLink()">సరే</button>
-            </div>
+        <div id="fromContainer" class="message"></div>
+        
+        <div class="name-input" id="nameInput">
+            <input type="text" id="userName" placeholder="మీ పేరు ఇవ్వండి">
+            <button onclick="generateLink()">సరే</button>
         </div>
         
         <div class="share-section" id="shareSection">
-            <p class="message">ఈ లింక్‌ను మీ స్నేహితులతో షేర్ చేయండి:</p>
             <div class="share-link" id="shareLink"></div>
-            <a href="#" class="whatsapp-btn" id="whatsappBtn" target="_blank">
-                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0id2hpdGUiIGQ9Ik0xNy40NzIgMTQuMTA0Yy0uMTk2LS4xNDktLjE0NS0uMTk2LS4yOTEtLjY1Ni0uMTAxLS4yOTEtLjUwNy0uNTYyLS43NDMtLjYwNS0uMTk2LS4wNDktLjQyMi0uMDA3LS42NDcuMDk4LS4zNDQuMTk2LTEuMTUzLjU2Mi0xLjU1OS41NjItLjQwNyAwLS40OTgtLjE0Ni0uNzQzLS4xOTYtLjI0NS0uMDU2LS41Ni0uMTQ2LS44NTQtLjQyMi0uMjkxLS4yNDUtLjE0Ni0uMjQ1LjE0Ni0uNzQzLjA5OC0uMTQ2LjI0NS0uMzQ0LjM0NC0uNDkuMDk4LS4xNDYuMTQ2LS4yNDUuMDQ5LS40MjItLjE0Ni0uMTk2LS41OTUtLjU2Mi0uODE5LS43NjMtLjI0NS0uMjQ1LS4wNDktLjM0NCAwLS40NjMuMDQ5LS4wNDkuMTk2LS4xNDYuMjkxLS4yNDUuMDk4LS4xNDYuMTQ2LS4yOTkuMjE5LS40MjIuMDk4LS4xOTYuMDU2LS4zNjQtLjAwNy0uNTA3LS4wOTgtLjI0NS0uNTYyLS42MDQtLjg1NC0uODE5LS4yOTEtLjE5Ni0uMDQ5LS4zOTEgMC0uNTA3LjA5OC0uMTQ2LjE0Ni0uMzQ0LjQ5LS4zNDQuODU0IDAgLjUwNy43NDMgMS4wMTQuOTg4IDEuMzYuMjQ1LjM0NC4zNDQuNDIyLjU2Mi42OTkuMTk2LjI0NS4zOTEuNTYuNTk1LjgxOS4yNDUuMzQ0LjUwNy42NDcuODE5Ljk4OC4zNDQuMzkxLjY0Ny40MjIgMS4wNjYuMzkxLjM0NC0uMDQ5LjUwNy0uMTk2LjY5OS0uNDIyLjE5Ni0uMjQ1LjI0NS0uNDIyLjM0NC0uNDIyLjA5OC0uMDU2LjI0NS0uMDA3LjM5MS4xNDZ6TTEyIDBjNi42MjcgMCAxMiA1LjM3MyAxMiAxMnMtNS4zNzMgMTItMTIgMTItMTItNS4zNzMtMTItMTJTNS4zNzMgMCAxMiAwem0wIDIuMTYyYy01LjQyMyAwLTkuODM4IDQuNDE1LTkuODM4IDkuODM4IDAgMi4xMzYuNjk5IDQuMTEzIDEug5MiA1LjcyN2wtMS4yOTYtNC4zMjZhLjQxLjQxIDAgMC0xIC4yNzQtLjUxNGw0LjEzNi0xLjE4YzEuMzg4LS4zOTUgMi44NTUtLjYxMyA0LjM4Mi0uNjEzIDUuNDIzIDAgOS44MzggNC40MTUgOS44MzggOS44MzggMCA1LjQyMy00LjQxNSA5LjgzOC05LjgzOCA5LjgzOHoiLz48L3N2Zz4=" alt="WhatsApp">
+            <button class="whatsapp-btn" onclick="shareOnWhatsApp()">
+                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0id2hpdGUiIGQ9Ik0xNy40NzIgMTQuMzA0Yy0uMTk1LS4xNDktLjI5My0uMzQzLS4yOTMtLjU0N3YtLjAxOGMtLjAwMS0uMTYxLjA3NC0uMzEzLjIwMS0uNDE0LjE1MS0uMTE5Ljk0Mi0uNzUxLjk0Mi0uNzUxcy0uNDk3LS4yNDItLjY0OC0uMzYxYy0uMTUxLS4xMTktLjM3MS0uMTE5LS41NzEuMDJsLS4xMTEuMDgzYy0uMTQxLjEwNS0yLjU5MyAxLjg3OC0yLjU5MyAxLjg3OHMtLjE5OC4xNDktLjI5My4yNDhjLS4wOTkuMTA0LS4xNjEuMjUxLS4xMTEuNDIxbC4zOTkgMS4yNjdjLjA0OS4xNjkuMTk4LjI5OC4zNzEuMzQ4LjE3My4wNDkuMzQ2LS4wMjUuNDY1LS4xNDkuMDc0LS4wODMgMS42NDgtMS41MDkgMS42NDgtMS41MDlzLjQyLS4yOTcuNjE1LS40NDVjLjE5NS0uMTQ5LjE5NS0uMzk5LjAwNS0uNTQ4bC0uOTc3LS43MjR6TTEyIDIuMDQzYy01LjUxOSAwLTEwIDQuNDgxLTEwIDEwIDAgMi4xMjkuNjg1IDQuMTE1IDEuODUyIDUuNzQ4TDQuNSAxOS42N2wuNzUyLS4yNDdjMS45NzEuNjU2IDQuMjI4IDEuMDEyIDYuNzQ4IDEuMDEyIDUuNTE5IDAgMTAtNC40ODEgMTAtMTAgMC01LjUxOS00LjQ4MS0xMC0xMC0xMHptMCAxLjVDMTcuMjUyIDMuNTQzIDIxIDcuMjkxIDIxIDEyYzAgNC43MDktMy43NDggOC41NTctOC40NzkgOC41NTctLjg3NCAwLTEuNzI5LS4xMDktMi41MzItLjMwN2wtLjU4Ni0uMTQ3LS4zODcuMzc3Yy0xLjQ0NyAxLjM5Ni0zLjQwOCAyLjE5OC01LjUxNiAyLjE5OC0uMTc0IDAtLjM0Ni0uMDA3LS41MTktLjAxOGwuMTE0LS4wMzJjMS44MzItLjU0OCAzLjA0LTEuODM3IDMuMTA4LTMuNDk0bC4wMTQtLjI1NWMtLjY2OS0uNDQ0LTEuMjI0LS45OTktMS42NjgtMS42NjgtLjQ0NC0uNjY5LS42NjYtMS40NDItLjY2Ni0yLjMxNyAwLTIuNzQyIDIuMjI5LTQuOTcgNC45Ny00Ljk3eiIvPjwvc3ZnPg==" alt="WhatsApp">
                 WhatsAppలో షేర్ చేయండి
-            </a>
+            </button>
+            <button onclick="copyLink()">లింక్ కాపీ చేయండి</button>
         </div>
     </div>
 
@@ -255,18 +218,56 @@
         
         // Set greeting based on URL parameter
         const greetingElement = document.getElementById('greeting');
+        const fromContainer = document.getElementById('fromContainer');
+        
         if (senderName) {
-            greetingElement.textContent = `దీపావళి శుభాకాంక్షలు ${decodeURIComponent(senderName)} నుండి`;
-            document.getElementById('nameForm').style.display = 'none';
-            document.getElementById('shareSection').style.display = 'block';
+            greetingElement.textContent = `దీపావళి శుభాకాంక్షలు`;
+            fromContainer.innerHTML = `<span style="color: var(--orange); font-weight: bold;">${decodeURIComponent(senderName)}</span> నుండి`;
         }
+        
+        // Fireworks animation
+        function createFirework() {
+            const colors = ['#FFD700', '#FFA500', '#FF4500', '#FF6347', '#FFD700'];
+            const firework = document.createElement('div');
+            firework.className = 'firework';
+            
+            // Random position
+            const x = Math.random() * window.innerWidth;
+            const y = Math.random() * window.innerHeight * 0.6; // Keep in upper part of screen
+            
+            // Random color
+            const color = colors[Math.floor(Math.random() * colors.length)];
+            
+            firework.style.left = `${x}px`;
+            firework.style.top = `${y}px`;
+            firework.style.boxShadow = `0 0 10px 5px ${color}`;
+            
+            document.body.appendChild(firework);
+            
+            // Remove after animation
+            setTimeout(() => {
+                firework.remove();
+            }, 1000);
+        }
+        
+        // Initial fireworks
+        for (let i = 0; i < 10; i++) {
+            setTimeout(createFirework, i * 300);
+        }
+        
+        // Ongoing fireworks every 3 seconds
+        setInterval(() => {
+            for (let i = 0; i < 5; i++) {
+                setTimeout(createFirework, i * 300);
+            }
+        }, 3000);
         
         // Generate shareable link
         function generateLink() {
             const userName = document.getElementById('userName').value.trim();
             
             if (!userName) {
-                alert('దయచేసి మీ పేరు నమోదు చేయండి');
+                alert('దయచేసి మీ పేరు ఇవ్వండి');
                 return;
             }
             
@@ -276,78 +277,44 @@
             document.getElementById('shareLink').textContent = shareUrl;
             document.getElementById('shareSection').style.display = 'block';
             
-            // Set up WhatsApp share
-            const whatsappBtn = document.getElementById('whatsappBtn');
-            const shareMessage = `దీపావళి శుభాకాంక్షలు! ${userName} నుండి ప్రత్యేకమైన శుభాకాంక్షలు పొందండి: ${shareUrl}`;
-            
-            whatsappBtn.href = `https://wa.me/?text=${encodeURIComponent(shareMessage)}`;
-            
             // Scroll to share section
             document.getElementById('shareSection').scrollIntoView({ behavior: 'smooth' });
+        }
+        
+        // Copy link to clipboard
+        function copyLink() {
+            const shareLink = document.getElementById('shareLink').textContent;
+            navigator.clipboard.writeText(shareLink).then(() => {
+                alert('లింక్ కాపీ చేయబడింది!');
+            }).catch(err => {
+                console.error('Failed to copy: ', err);
+                prompt('దయచేసి ఈ లింక్ కాపీ చేయండి:', shareLink);
+            });
+        }
+        
+        // Share via WhatsApp or native share API
+        function shareOnWhatsApp() {
+            const shareLink = document.getElementById('shareLink').textContent;
+            const message = `దీపావళి శుభాకాంక్షలు! ఈ సందేశాన్ని చూడండి: ${shareLink}`;
             
-            // Setup Web Share API for mobile devices
             if (navigator.share) {
-                whatsappBtn.onclick = async (e) => {
-                    e.preventDefault();
-                    try {
-                        await navigator.share({
-                            title: 'దీపావళి శుభాకాంక్షలు',
-                            text: shareMessage,
-                            url: shareUrl
-                        });
-                    } catch (err) {
-                        console.log('Error sharing:', err);
-                    }
-                };
+                navigator.share({
+                    title: 'దీపావళి శుభాకాంక్షలు',
+                    text: message,
+                    url: shareLink
+                }).catch(err => {
+                    console.log('Error sharing:', err);
+                    openWhatsApp(message);
+                });
+            } else {
+                openWhatsApp(message);
             }
         }
         
-        // Create fireworks
-        function createFireworks() {
-            const colors = ['#FFD700', '#FF5733', '#C70039', '#FF00FF', '#00FFFF'];
-            const fireworksCount = 15;
-            
-            for (let i = 0; i < fireworksCount; i++) {
-                const firework = document.createElement('div');
-                firework.className = 'firework';
-                
-                // Random position
-                const x = Math.random() * window.innerWidth;
-                const y = Math.random() * window.innerHeight;
-                
-                // Random color
-                const color = colors[Math.floor(Math.random() * colors.length)];
-                
-                // Random movement
-                const tx = (Math.random() - 0.5) * 200;
-                const ty = (Math.random() - 0.5) * 200;
-                
-                firework.style.left = `${x}px`;
-                firework.style.top = `${y}px`;
-                firework.style.backgroundColor = color;
-                firework.style.setProperty('--tx', `${tx}px`);
-                firework.style.setProperty('--ty', `${ty}px`);
-                firework.style.animationDelay = `${Math.random() * 2}s`;
-                
-                document.body.appendChild(firework);
-                
-                // Remove after animation
-                setTimeout(() => {
-                    firework.remove();
-                }, 3000);
-            }
+        function openWhatsApp(message) {
+            const url = `https://wa.me/?text=${encodeURIComponent(message)}`;
+            window.open(url, '_blank');
         }
-        
-        // Initial fireworks
-        createFireworks();
-        
-        // Regular fireworks
-        setInterval(createFireworks, 3000);
-        
-        // Trigger fireworks when clicking OK button
-        document.querySelector('.btn').addEventListener('click', () => {
-            setTimeout(createFireworks, 500);
-        });
     </script>
 </body>
 </html>

@@ -1,0 +1,58 @@
+<!-- Diwali Greeting Page for Blogger - Mobile Friendly - Telugu -->
+<div style="text-align:center; font-family:'Noto Sans Telugu',sans-serif; background:linear-gradient(to bottom,#0d0d0d,#2c003e); color:white; padding:20px; border-radius:15px; box-shadow:0 0 15px rgba(255,165,0,0.7); max-width:500px; margin:auto;">
+
+  <img src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExdDA1eXl0MmxydDJlZmFjZGYxOGF4aXAxY2U3OGJieG1kMHBjbzMwbSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/ErwOniUoUCjUCteUln/giphy.gif" style="width:100%; border-radius:10px; box-shadow:0 0 10px #fff; margin-bottom:15px;" alt="లక్ష్మీ దేవి" />
+
+  <h2 id="mainHeading" style="color:#ffe082; text-shadow:0 0 10px #ffcc00, 0 0 20px #ffaa00;">దీపావళి శుభాకాంక్షలు</h2>
+  <p id="subText">మీ పేరు టైప్ చేసి మీ స్నేహితులకు పంపండి!</p>
+
+  <input type="text" id="nameInput" placeholder="మీ పేరు రాయండి" style="width:95%; padding:12px; border-radius:8px; border:2px solid #ffcc00; background:rgba(255,255,255,0.1); color:white; font-size:1em;" />
+  <br/><br/>
+  <button onclick="generateLink()" style="padding:12px 25px; background:#ff6600; color:white; border:none; border-radius:8px; font-weight:bold; font-size:1em;">సరే</button>
+
+  <div id="linkBox" style="margin-top:15px; background:rgba(255,255,255,0.1); border-radius:10px; border:1px dashed #ffcc00; padding:10px; display:none;">
+    <span id="generatedLink" style="color:#aaffaa; display:block; word-wrap:break-word;"></span>
+    <a id="whatsappBtn" href="#" onclick="shareWhatsApp(event)" style="display:inline-flex; align-items:center; background:#25D366; padding:10px; color:black; text-decoration:none; font-weight:bold; border-radius:8px; margin-top:10px;">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" style="width:24px; height:24px; margin-right:8px;" />
+      వాట్సాప్‌లో షేర్ చేయండి
+    </a>
+  </div>
+</div>
+
+<script>
+  const urlParams = new URLSearchParams(window.location.search);
+  const sender = urlParams.get("from");
+  if (sender) {
+    const safeName = decodeURIComponent(sender);
+    document.getElementById("mainHeading").textContent = `దీపావళి శుభాకాంక్షలు ${safeName} నుండి`;
+    document.getElementById("subText").textContent = `మీకు ${safeName} తరఫున దీపావళి శుభాకాంక్షలు! మీరు కూడా మీ పేరుతో పంచుకోండి.`;
+  }
+
+  function generateLink() {
+    const name = document.getElementById("nameInput").value.trim();
+    if (!name) {
+      alert("మీ పేరు టైప్ చేయండి.");
+      return;
+    }
+    const baseUrl = window.location.href.split("?")[0];
+    const finalLink = `${baseUrl}?from=${encodeURIComponent(name)}`;
+    document.getElementById("generatedLink").textContent = finalLink;
+    document.getElementById("whatsappBtn").href = `https://wa.me/?text=దీపావళి శుభాకాంక్షలు! ఈ లింక్ ఓపెన్ చేయండి: ${finalLink}`;
+    document.getElementById("linkBox").style.display = "block";
+  }
+
+  function shareWhatsApp(event) {
+    const link = document.getElementById("generatedLink").textContent;
+    const text = `దీపావళి శుభాకాంక్షలు! ఈ లింక్ ఓపెన్ చేయండి: ${link}`;
+    if (navigator.share) {
+      event.preventDefault();
+      navigator.share({
+        title: "దీపావళి శుభాకాంక్షలు",
+        text,
+        url: link
+      }).catch(() => {
+        window.open(`https://wa.me/?text=${encodeURIComponent(text)}`, "_blank");
+      });
+    }
+  }
+</script>

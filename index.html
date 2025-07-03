@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="te">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>దీపావళి శుభాకాంక్షలు</title>
+    <style>
+        :root {
+            --primary: #FFD700;
+            --secondary: #FF5733;
+            --accent: #C70039;
+            --dark: #1A1A2E;
+            --light: #FFF5E4;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--dark);
+            color: var(--primary);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            position: relative;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+            z-index: 10;
+            background-color: rgba(26, 26, 46, 0.8);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 0 30px rgba(255, 215, 0, 0.3);
+            border: 1px solid var(--primary);
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            text-shadow: 0 0 10px var(--secondary);
+            animation: glow 2s infinite alternate;
+            color: var(--primary);
+        }
+        
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 10px var(--secondary);
+            }
+            to {
+                text-shadow: 0 0 20px var(--accent), 0 0 30px var(--secondary);
+            }
+        }
+        
+        .laxmi-img {
+            width: 100%;
+            max-width: 300px;
+            height: auto;
+            border-radius: 10px;
+            margin: 20px 0;
+            box-shadow: 0 0 25px var(--primary);
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-15px);
+            }
+        }
+        
+        .message {
+            font-size: 1.2rem;
+            margin: 15px 0;
+            line-height: 1.6;
+            color: var(--light);
+        }
+        
+        .name-form {
+            margin: 25px 0;
+        }
+        
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        input[type="text"] {
+            padding: 12px 20px;
+            width: 100%;
+            max-width: 300px;
+            border: 2px solid var(--primary);
+            border-radius: 50px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-size: 1rem;
+            text-align: center;
+            outline: none;
+            transition: all 0.3s;
+        }
+        
+        input[type="text"]:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 15px var(--secondary);
+        }
+        
+        .btn {
+            padding: 12px 30px;
+            background: linear-gradient(45deg, var(--secondary), var(--accent));
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(199, 0, 57, 0.4);
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(199, 0, 57, 0.6);
+        }
+        
+        .btn:active {
+            transform: translateY(1px);
+        }
+        
+        .share-section {
+            margin-top: 30px;
+            display: none;
+        }
+        
+        .share-link {
+            word-break: break-all;
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 10px;
+            margin: 15px 0;
+            color: var(--light);
+            border: 1px dashed var(--primary);
+        }
+        
+        .whatsapp-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 12px 25px;
+            background-color: #25D366;
+            color: white;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 15px;
+            transition: all 0.3s;
+        }
+        
+        .whatsapp-btn:hover {
+            background-color: #128C7E;
+            transform: translateY(-3px);
+        }
+        
+        .whatsapp-btn img {
+            width: 24px;
+            height: 24px;
+        }
+        
+        /* Fireworks */
+        .firework {
+            position: absolute;
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            box-shadow: 0 0 10px 5px var(--primary);
+            animation: explode 3s ease-out infinite;
+            opacity: 0;
+            z-index: 1;
+        }
+        
+        @keyframes explode {
+            0% {
+                transform: translate(0, 0);
+                width: 5px;
+                height: 5px;
+                opacity: 1;
+            }
+            100% {
+                transform: translate(var(--tx), var(--ty));
+                width: 0;
+                height: 0;
+                opacity: 0;
+            }
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .container {
+                padding: 20px;
+            }
+            
+            .message {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 id="greeting">దీపావళి శుభాకాంక్షలు</h1>
+        
+        <img src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExdDA1eXl0MmxydDJlZmFjZGYxOGF4aXAxY2U3OGJieG1kMHBjbzMwbSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/ErwOniUoUCjUCteUln/giphy.gif" alt="లక్ష్మీ దేవి యానిమేషన్" class="laxmi-img">
+        
+        <p class="message">లక్ష్మీ దేవి మీకు సంపద, సుఖశాంతులు ప్రసాదించాలని ప్రార్థిస్తున్నాము!</p>
+        
+        <div class="name-form" id="nameForm">
+            <div class="input-group">
+                <input type="text" id="userName" placeholder="మీ పేరు నమోదు చేయండి">
+                <button class="btn" onclick="generateLink()">సరే</button>
+            </div>
+        </div>
+        
+        <div class="share-section" id="shareSection">
+            <p class="message">ఈ లింక్‌ను మీ స్నేహితులతో షేర్ చేయండి:</p>
+            <div class="share-link" id="shareLink"></div>
+            <a href="#" class="whatsapp-btn" id="whatsappBtn" target="_blank">
+                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0id2hpdGUiIGQ9Ik0xNy40NzIgMTQuMTA0Yy0uMTk2LS4xNDktLjE0NS0uMTk2LS4yOTEtLjY1Ni0uMTAxLS4yOTEtLjUwNy0uNTYyLS43NDMtLjYwNS0uMTk2LS4wNDktLjQyMi0uMDA3LS42NDcuMDk4LS4zNDQuMTk2LTEuMTUzLjU2Mi0xLjU1OS41NjItLjQwNyAwLS40OTgtLjE0Ni0uNzQzLS4xOTYtLjI0NS0uMDU2LS41Ni0uMTQ2LS44NTQtLjQyMi0uMjkxLS4yNDUtLjE0Ni0uMjQ1LjE0Ni0uNzQzLjA5OC0uMTQ2LjI0NS0uMzQ0LjM0NC0uNDkuMDk4LS4xNDYuMTQ2LS4yNDUuMDQ5LS40MjItLjE0Ni0uMTk2LS41OTUtLjU2Mi0uODE5LS43NjMtLjI0NS0uMjQ1LS4wNDktLjM0NCAwLS40NjMuMDQ5LS4wNDkuMTk2LS4xNDYuMjkxLS4yNDUuMDk4LS4xNDYuMTQ2LS4yOTkuMjE5LS40MjIuMDk4LS4xOTYuMDU2LS4zNjQtLjAwNy0uNTA3LS4wOTgtLjI0NS0uNTYyLS42MDQtLjg1NC0uODE5LS4yOTEtLjE5Ni0uMDQ5LS4zOTEgMC0uNTA3LjA5OC0uMTQ2LjE0Ni0uMzQ0LjQ5LS4zNDQuODU0IDAgLjUwNy43NDMgMS4wMTQuOTg4IDEuMzYuMjQ1LjM0NC4zNDQuNDIyLjU2Mi42OTkuMTk2LjI0NS4zOTEuNTYuNTk1LjgxOS4yNDUuMzQ0LjUwNy42NDcuODE5Ljk4OC4zNDQuMzkxLjY0Ny40MjIgMS4wNjYuMzkxLjM0NC0uMDQ5LjUwNy0uMTk2LjY5OS0uNDIyLjE5Ni0uMjQ1LjI0NS0uNDIyLjM0NC0uNDIyLjA5OC0uMDU2LjI0NS0uMDA3LjM5MS4xNDZ6TTEyIDBjNi42MjcgMCAxMiA1LjM3MyAxMiAxMnMtNS4zNzMgMTItMTIgMTItMTItNS4zNzMtMTItMTJTNS4zNzMgMCAxMiAwem0wIDIuMTYyYy01LjQyMyAwLTkuODM4IDQuNDE1LTkuODM4IDkuODM4IDAgMi4xMzYuNjk5IDQuMTEzIDEug5MiA1LjcyN2wtMS4yOTYtNC4zMjZhLjQxLjQxIDAgMC0xIC4yNzQtLjUxNGw0LjEzNi0xLjE4YzEuMzg4LS4zOTUgMi44NTUtLjYxMyA0LjM4Mi0uNjEzIDUuNDIzIDAgOS44MzggNC40MTUgOS44MzggOS44MzggMCA1LjQyMy00LjQxNSA5LjgzOC05LjgzOCA5LjgzOHoiLz48L3N2Zz4=" alt="WhatsApp">
+                WhatsAppలో షేర్ చేయండి
+            </a>
+        </div>
+    </div>
+
+    <script>
+        // Check for sender name in URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const senderName = urlParams.get('from');
+        
+        // Set greeting based on URL parameter
+        const greetingElement = document.getElementById('greeting');
+        if (senderName) {
+            greetingElement.textContent = `దీపావళి శుభాకాంక్షలు ${decodeURIComponent(senderName)} నుండి`;
+            document.getElementById('nameForm').style.display = 'none';
+            document.getElementById('shareSection').style.display = 'block';
+        }
+        
+        // Generate shareable link
+        function generateLink() {
+            const userName = document.getElementById('userName').value.trim();
+            
+            if (!userName) {
+                alert('దయచేసి మీ పేరు నమోదు చేయండి');
+                return;
+            }
+            
+            const currentUrl = window.location.href.split('?')[0];
+            const shareUrl = `${currentUrl}?from=${encodeURIComponent(userName)}`;
+            
+            document.getElementById('shareLink').textContent = shareUrl;
+            document.getElementById('shareSection').style.display = 'block';
+            
+            // Set up WhatsApp share
+            const whatsappBtn = document.getElementById('whatsappBtn');
+            const shareMessage = `దీపావళి శుభాకాంక్షలు! ${userName} నుండి ప్రత్యేకమైన శుభాకాంక్షలు పొందండి: ${shareUrl}`;
+            
+            whatsappBtn.href = `https://wa.me/?text=${encodeURIComponent(shareMessage)}`;
+            
+            // Scroll to share section
+            document.getElementById('shareSection').scrollIntoView({ behavior: 'smooth' });
+            
+            // Setup Web Share API for mobile devices
+            if (navigator.share) {
+                whatsappBtn.onclick = async (e) => {
+                    e.preventDefault();
+                    try {
+                        await navigator.share({
+                            title: 'దీపావళి శుభాకాంక్షలు',
+                            text: shareMessage,
+                            url: shareUrl
+                        });
+                    } catch (err) {
+                        console.log('Error sharing:', err);
+                    }
+                };
+            }
+        }
+        
+        // Create fireworks
+        function createFireworks() {
+            const colors = ['#FFD700', '#FF5733', '#C70039', '#FF00FF', '#00FFFF'];
+            const fireworksCount = 15;
+            
+            for (let i = 0; i < fireworksCount; i++) {
+                const firework = document.createElement('div');
+                firework.className = 'firework';
+                
+                // Random position
+                const x = Math.random() * window.innerWidth;
+                const y = Math.random() * window.innerHeight;
+                
+                // Random color
+                const color = colors[Math.floor(Math.random() * colors.length)];
+                
+                // Random movement
+                const tx = (Math.random() - 0.5) * 200;
+                const ty = (Math.random() - 0.5) * 200;
+                
+                firework.style.left = `${x}px`;
+                firework.style.top = `${y}px`;
+                firework.style.backgroundColor = color;
+                firework.style.setProperty('--tx', `${tx}px`);
+                firework.style.setProperty('--ty', `${ty}px`);
+                firework.style.animationDelay = `${Math.random() * 2}s`;
+                
+                document.body.appendChild(firework);
+                
+                // Remove after animation
+                setTimeout(() => {
+                    firework.remove();
+                }, 3000);
+            }
+        }
+        
+        // Initial fireworks
+        createFireworks();
+        
+        // Regular fireworks
+        setInterval(createFireworks, 3000);
+        
+        // Trigger fireworks when clicking OK button
+        document.querySelector('.btn').addEventListener('click', () => {
+            setTimeout(createFireworks, 500);
+        });
+    </script>
+</body>
+</html>

@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="te">
 <head>
   <meta charset="UTF-8">
-  <title>Happy Diwali Greeting</title>
+  <title>శుభదీపావళి శుభాకాంక్షలు</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(to bottom, #ffecd2, #fcb69f);
+      background: linear-gradient(to bottom, #fff6d1, #ffccbc);
       text-align: center;
       overflow-x: hidden;
     }
@@ -17,7 +17,7 @@
       max-width: 100%;
       height: auto;
       margin-top: 20px;
-      border-radius: 10px;
+      border-radius: 12px;
     }
 
     .greeting {
@@ -40,6 +40,7 @@
       border-radius: 10px;
       border: 2px solid #ff4081;
       outline: none;
+      font-family: inherit;
     }
 
     button {
@@ -87,36 +88,35 @@
 </head>
 <body>
 
-  <img src="laxmi.gif" alt="Laxmi GIF" class="laxmi">
+  <img src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExdDA1eXl0MmxydDJlZmFjZGYxOGF4aXAxY2U3OGJieG1kMHBjbzMwbSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/ErwOniUoUCjUCteUln/giphy.gif" alt="లక్ష్మీ దేవి" class="laxmi">
 
   <div class="greeting" id="greeting"></div>
 
   <div class="name-box">
-    <input type="text" id="nameInput" placeholder="Enter your name">
+    <input type="text" id="nameInput" placeholder="మీ పేరు టైప్ చేయండి">
     <br>
-    <button onclick="generateLink()">🎁 Generate & Share</button>
+    <button onclick="generateLink()">🎁 లింక్ తయారు చేసి షేర్ చేయండి</button>
   </div>
 
   <div id="share-btn" style="display:none; margin-top: 20px;">
     <button onclick="shareLink()">
-      <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp"> Share via WhatsApp
+      <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp"> WhatsApp లో షేర్ చేయండి
     </button>
   </div>
 
   <script>
-    // Show greeting if name present in URL
     const urlParams = new URLSearchParams(window.location.search);
     const from = urlParams.get("from");
 
     if (from) {
-      document.getElementById("greeting").innerText = `🎉 Happy Diwali from ${decodeURIComponent(from)} 🎆`;
-      firecrackerRain(); // Start firecrackers
+      document.getElementById("greeting").innerText = `🎉 ${decodeURIComponent(from)} తరఫున మీకు శుభదీపావళి శుభాకాంక్షలు 🎆`;
+      firecrackerRain();
     }
 
     function generateLink() {
       const name = document.getElementById("nameInput").value.trim();
       if (!name) {
-        alert("Please enter your name.");
+        alert("దయచేసి మీ పేరు టైప్ చేయండి.");
         return;
       }
 
@@ -126,13 +126,13 @@
     }
 
     function shareLink() {
-      const text = `🎇 Happy Diwali! 🎊 Click below for a surprise:\n${window.generatedLink}`;
+      const text = `🎇 మీకు శుభదీపావళి! 🎊 ఈ లింక్ ను ఓపెన్ చేసి చూడండి:\n${window.generatedLink}`;
       const whatsappURL = `https://wa.me/?text=${encodeURIComponent(text)}`;
       window.open(whatsappURL, "_blank");
     }
 
     function firecrackerRain() {
-      for (let i = 0; i < 60; i++) { // 3x more firecrackers
+      for (let i = 0; i < 60; i++) {
         setTimeout(() => {
           const fire = document.createElement("div");
           fire.classList.add("firecracker");

@@ -1,463 +1,149 @@
 <!DOCTYPE html>
-<html lang="te">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>దీపావళి శుభాకాంక్షలు</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+Telugu:wght@400;700&display=swap'); /* For better Telugu font */
+  <meta charset="UTF-8">
+  <title>Happy Diwali Greeting</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom, #ffecd2, #fcb69f);
+      text-align: center;
+      overflow-x: hidden;
+    }
 
-        body {
-            font-family: 'Noto Serif Telugu', Arial, sans-serif;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            margin: 0;
-            background: linear-gradient(to bottom, #fde2b4, #f8c985, #f5b058); /* Softer, more traditional gold/orange */
-            color: #4a2d0c; /* Dark brown for text */
-            text-align: center;
-            overflow-x: hidden; /* Prevent horizontal scroll */
-            position: relative; /* For firecracker positioning */
-            background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNzgiIGhlaWdodD0iNTciIHZpZXdCb3g9IjAgMCA3OCU2NzUwIiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxlbGxpcHNlIGN4PSI1Mi43MDYyIiBjeT0iMjkuMzcwNiIgcnk9IjE5LjcyMjciIHJ4PSI0NS4yMzMyIiBmaWxsPSIjRkZDQ0RDIiBmaWxsLW9wYWNpdHk9IjAuNCIvPjxlbGxpcHNlIGN4PSIyNS41NDg3IiBjeT0iMjcuMjc3NCIgcnk9IjE5LjcyMjciIHJ4PSI0NS4yMzMyIiBmaWxsPSIjRkZDQ0RDIiBmaWxsLW9wYWNpdHk9IjAuNCIvPjwvc3ZnPg=='); /* Subtle background pattern */
-            background-repeat: repeat;
-            background-size: 150px;
-        }
-        .container, .greeting-card {
-            background-color: rgba(255, 255, 255, 0.95); /* Slightly transparent white */
-            padding: 25px;
-            border-radius: 20px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-            max-width: 95%;
-            width: 450px;
-            box-sizing: border-box;
-            opacity: 0;
-            transform: translateY(30px);
-            animation: fadeInSlideUp 1s forwards ease-out;
-            position: relative;
-            z-index: 5; /* Ensure it's above animations */
-            border: 3px solid #ffae42; /* Golden border */
-        }
-        @keyframes fadeInSlideUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        .greeting-card {
-            display: none;
-        }
-        h1, h2 {
-            color: #d45e00; /* Richer orange */
-            margin-bottom: 20px;
-            font-size: 2.2em;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
-        }
-        .sender-name {
-            color: #8c5a21; /* Dark gold/brown */
-            font-weight: 700;
-            font-size: 1.8em;
-            margin-top: 15px;
-            animation: pulse 1.5s infinite alternate;
-        }
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            100% { transform: scale(1.05); }
-        }
-        img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 15px;
-            margin-bottom: 25px;
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-            border: 2px solid #ffc107; /* Golden frame */
-        }
-        input {
-            width: calc(100% - 24px);
-            padding: 14px;
-            margin-bottom: 20px;
-            border: 2px solid #fbc02d; /* Golden yellow */
-            border-radius: 10px;
-            font-size: 1.1em;
-            box-sizing: border-box;
-            text-align: center;
-            background-color: #fffaf0; /* Off-white */
-            color: #4a2d0c;
-        }
-        input::placeholder {
-            color: #bcaaa4;
-        }
-        button {
-            background-color: #ff9800; /* Orange */
-            color: white;
-            padding: 15px 30px;
-            border: none;
-            border-radius: 10px;
-            cursor: pointer;
-            font-size: 1.2em;
-            font-weight: bold;
-            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
-        button:hover {
-            background-color: #f57c00; /* Darker orange */
-            transform: translateY(-3px);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
-        }
-        .share-link-container {
-            margin-top: 25px;
-            display: flex; /* Keep it visible */
-            flex-direction: column;
-            align-items: center;
-        }
-        .whatsapp-share-button {
-            display: flex;
-            align-items: center;
-            background-color: #25D366; /* WhatsApp Green */
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 7px;
-            cursor: pointer;
-            font-size: 1em;
-            transition: background-color 0.3s ease;
-            text-decoration: none;
-        }
-        .whatsapp-share-button:hover {
-            background-color: #128C7E; /* Darker WhatsApp Green */
-        }
-        .whatsapp-logo {
-            width: 24px;
-            height: 24px;
-            margin-right: 10px;
-        }
-        #shareLinkContainer p, #newShareLinkContainer p {
-            margin-bottom: 10px;
-        }
-        #shareLink, #newShareLink {
-            background-color: #fff;
-            padding: 12px;
-            border-radius: 8px;
-            word-break: break-all;
-            font-size: 0.95em;
-            margin-bottom: 12px;
-            border: 1px solid #ffecb3; /* Lighter gold border */
-            cursor: text; /* Changed cursor */
-            box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
-            display: none; /* Hide the text box */
-        }
-        .copy-button {
-            background-color: #4CAF50; /* Green */
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 7px;
-            cursor: pointer;
-            font-size: 1em;
-            transition: background-color 0.3s ease;
-            margin-top: 10px;
-        }
-        .copy-button:hover {
-            background-color: #45a049;
-        }
-        .copied-message {
-            color: #4CAF50;
-            font-size: 0.9em;
-            margin-top: 8px;
-            display: none;
-            font-weight: bold;
-        }
+    .laxmi {
+      max-width: 100%;
+      height: auto;
+      margin-top: 20px;
+      border-radius: 10px;
+    }
 
-        /* Confetti animation */
-        .confetti {
-            position: absolute;
-            width: 10px;
-            height: 10px;
-            background-color: #ffeb3b; /* Yellow */
-            animation: fall linear forwards;
-            opacity: 0;
-            border-radius: 50%;
-            z-index: 1;
-            box-shadow: 0 0 5px rgba(255,255,0,0.5);
-        }
+    .greeting {
+      font-size: 28px;
+      font-weight: bold;
+      color: #ff4081;
+      margin: 20px;
+      animation: fadeIn 2s ease-in-out;
+      text-shadow: 2px 2px 4px #ffcc00;
+    }
 
-        @keyframes fall {
-            0% {
-                transform: translateY(-10vh) rotate(0deg);
-                opacity: 0;
-            }
-            10% {
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(100vh) rotate(720deg);
-                opacity: 0;
-            }
-        }
-        /* Firefly animation */
-        .firefly {
-            position: absolute;
-            background: radial-gradient(circle at 30% 30%, #ffd700, transparent);
-            border-radius: 50%;
-            opacity: 0;
-            animation: sparkle 2s infinite, float 5s infinite alternate;
-            z-index: 1;
-            filter: blur(1px); /* Soft glow */
-        }
-        @keyframes sparkle {
-            0% { transform: scale(0.1); opacity: 0; }
-            50% { transform: scale(1); opacity: 0.8; }
-            100% { transform: scale(0.1); opacity: 0; }
-        }
-        @keyframes float {
-            0% { transform: translateY(0px) translateX(0px) rotate(0deg); }
-            25% { transform: translateY(-5px) translateX(5px) rotate(5deg); }
-            50% { transform: translateY(0px) translateX(0px) rotate(0deg); }
-            75% { transform: translateY(-5px) translateX(-5px) rotate(-5deg); }
-            100% { transform: translateY(0px) translateX(0px) rotate(0deg); }
-        }
+    .name-box {
+      margin: 20px;
+    }
 
-        /* Firecracker animation */
-        .firecracker-particle {
-            position: absolute;
-            background-color: #ff4500; /* OrangeRed */
-            border-radius: 50%;
-            animation: explode 0.8s forwards;
-            opacity: 0;
-            z-index: 10; /* Above everything else */
-        }
+    input[type="text"] {
+      padding: 10px;
+      font-size: 18px;
+      width: 80%;
+      border-radius: 10px;
+      border: 2px solid #ff4081;
+      outline: none;
+    }
 
-        @keyframes explode {
-            0% {
-                transform: translate(0, 0) scale(0.1);
-                opacity: 1;
-            }
-            100% {
-                transform: translate(var(--x), var(--y)) scale(0);
-                opacity: 0;
-            }
-        }
-    </style>
+    button {
+      margin-top: 15px;
+      padding: 12px 25px;
+      font-size: 18px;
+      background: #ff5722;
+      color: white;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+
+    button:hover {
+      background: #e64a19;
+    }
+
+    #share-btn img {
+      width: 24px;
+      vertical-align: middle;
+      margin-right: 8px;
+    }
+
+    .firecracker {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background: radial-gradient(circle, #fff, #ff0, #f00);
+      border-radius: 50%;
+      pointer-events: none;
+      animation: explode 1s ease-out forwards;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.8); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    @keyframes explode {
+      0% { transform: scale(0.5); opacity: 1; }
+      100% { transform: scale(3); opacity: 0; }
+    }
+  </style>
 </head>
 <body>
 
-    <div id="mainContainer" class="container">
-        <img src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExdDA1eXl0MmxydDJlZmFjZGYxOGF4aXAxY2U3OGJieG1kMHBjbzMwbSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/ErwOniUoUCjUCteUln/giphy.gif" alt="Goddess Lakshmi GIF">
-        <h2>మీ పేరును నమోదు చేయండి</h2>
-        <input type="text" id="userNameInput" placeholder="ఉదాహరణకు: రాహుల్">
-        <button onclick="handleShareInitial()">శుభాకాంక్షలు పంపండి!</button>
+  <img src="laxmi.gif" alt="Laxmi GIF" class="laxmi">
 
-        <div class="share-link-container" id="shareLinkContainer">
-            <p>లేదా నేరుగా WhatsAppలో షేర్ చేయండి:</p>
-            <a id="whatsappShareLink" href="" class="whatsapp-share-button" target="_blank" rel="noopener noreferrer">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/WhatsApp.svg/2048px-WhatsApp.svg.png" alt="WhatsApp Logo" class="whatsapp-logo">
-                WhatsApp ద్వారా షేర్ చేయండి
-            </a>
-            <div id="shareLink"></div>
-            <button class="copy-button" onclick="copyLink()">లింక్‌ను కాపీ చేయండి</button>
-            <span class="copied-message" id="copiedMessage">కాపీ చేయబడింది!</span>
-        </div>
-    </div>
+  <div class="greeting" id="greeting"></div>
 
-    <div id="greetingCard" class="greeting-card">
-        <img src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExdDA1eXl0MmxydDJlZmFjZGYxOGF4aXAxY2U3OGJieG1kMHBjbzMwbSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/ErwOniUoUCjUCteUln/giphy.gif" alt="Goddess Lakshmi GIF">
-        <h1>దీపావళి శుభాకాంక్షలు!</h1>
-        <p><span id="displaySenderName" class="sender-name"></span> మీకు దీపావళి శుభాకాంక్షలు తెలియజేస్తున్నారు!</p>
-        <p>మీరు కూడా శుభాకాంక్షలు పంపడానికి మీ పేరును నమోదు చేయండి:</p>
-        <input type="text" id="recipientNameInput" placeholder="మీ పేరును నమోదు చేయండి">
-        <button onclick="handleShareRecipient()">నా శుభాకాంక్షలు పంపండి!</button>
-        <div class="share-link-container" id="newShareLinkContainer">
-            <p>లేదా నేరుగా WhatsAppలో షేర్ చేయండి:</p>
-            <a id="newWhatsappShareLink" href="" class="whatsapp-share-button" target="_blank" rel="noopener noreferrer">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/WhatsApp.svg/2048px-WhatsApp.svg.png" alt="WhatsApp Logo" class="whatsapp-logo">
-                WhatsApp ద్వారా షేర్ చేయండి
-            </a>
-            <div id="newShareLink"></div>
-            <button class="copy-button" onclick="copyNewLink()">లింక్‌ను కాపీ చేయండి</button>
-            <span class="copied-message" id="newCopiedMessage">కాపీ చేయబడింది!</span>
-        </div>
-    </div>
+  <div class="name-box">
+    <input type="text" id="nameInput" placeholder="Enter your name">
+    <br>
+    <button onclick="generateLink()">🎁 Generate & Share</button>
+  </div>
 
-    <script>
-        const gifLink = "https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExdDA1eXl0MmxydDJlZmFjZGYxOGF4aXAxY2U3OGJieG1kMHBjbzMwbSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/ErwOniUoUCjUCteUln/giphy.gif";
+  <div id="share-btn" style="display:none; margin-top: 20px;">
+    <button onclick="shareLink()">
+      <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp"> Share via WhatsApp
+    </button>
+  </div>
 
-        function generateConfetti() {
-            for (let i = 0; i < 50; i++) {
-                const confetti = document.createElement('div');
-                confetti.classList.add('confetti');
-                confetti.style.left = Math.random() * 100 + 'vw';
-                confetti.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 70%)`;
-                confetti.style.animationDelay = Math.random() * 2 + 's';
-                document.body.appendChild(confetti);
-            }
-        }
+  <script>
+    // Show greeting if name present in URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const from = urlParams.get("from");
 
-        function generateFireflies() {
-            for (let i = 0; i < 15; i++) {
-                const firefly = document.createElement('div');
-                firefly.classList.add('firefly');
-                const size = Math.random() * 8 + 4;
-                firefly.style.width = size + 'px';
-                firefly.style.height = size + 'px';
-                firefly.style.left = Math.random() * 100 + 'vw';
-                firefly.style.top = Math.random() * 100 + 'vh';
-                firefly.style.animationDelay = Math.random() * 5 + 's';
-                document.body.appendChild(firefly);
-            }
-        }
+    if (from) {
+      document.getElementById("greeting").innerText = `🎉 Happy Diwali from ${decodeURIComponent(from)} 🎆`;
+      firecrackerRain(); // Start firecrackers
+    }
 
-        function createFirecracker(x, y) {
-            const numParticles = 30;
-            const colors = ['#FF4500', '#FFD700', '#FF8C00', '#FF6347'];
+    function generateLink() {
+      const name = document.getElementById("nameInput").value.trim();
+      if (!name) {
+        alert("Please enter your name.");
+        return;
+      }
 
-            for (let i = 0; i < numParticles; i++) {
-                const particle = document.createElement('div');
-                particle.classList.add('firecracker-particle');
-                document.body.appendChild(particle);
+      const link = `${location.origin}${location.pathname}?from=${encodeURIComponent(name)}`;
+      window.generatedLink = link;
+      document.getElementById("share-btn").style.display = "block";
+    }
 
-                const size = Math.random() * 5 + 3;
-                particle.style.width = `${size}px`;
-                particle.style.height = `${size}px`;
-                particle.style.backgroundColor = colors[(Math.floor(Math.random() * colors.length)) % colors.length]; // Ensure index is within bounds
+    function shareLink() {
+      const text = `🎇 Happy Diwali! 🎊 Click below for a surprise:\n${window.generatedLink}`;
+      const whatsappURL = `https://wa.me/?text=${encodeURIComponent(text)}`;
+      window.open(whatsappURL, "_blank");
+    }
 
-                particle.style.left = `${x}px`;
-                particle.style.top = `${y}px`;
+    function firecrackerRain() {
+      for (let i = 0; i < 60; i++) { // 3x more firecrackers
+        setTimeout(() => {
+          const fire = document.createElement("div");
+          fire.classList.add("firecracker");
+          fire.style.top = Math.random() * window.innerHeight + "px";
+          fire.style.left = Math.random() * window.innerWidth + "px";
+          document.body.appendChild(fire);
+          setTimeout(() => fire.remove(), 1000);
+        }, i * 80);
+      }
+    }
+  </script>
 
-                const angle = Math.random() * 2 * Math.PI;
-                const distance = Math.random() * 80 + 50;
-                const endX = x + distance * Math.cos(angle);
-                const endY = y + distance * Math.sin(angle);
-
-                particle.style.setProperty('--x', `${endX - x}px`);
-                particle.style.setProperty('--y', `${endY - y}px`);
-
-                particle.addEventListener('animationend', () => {
-                    particle.remove();
-                });
-            }
-        }
-
-        function triggerMultipleFirecrackers() {
-            const numFirecrackers = 5 * 3; // Increased by 3 times
-            const delayBetween = 200; // Slightly reduced delay for more frequent bursts
-
-            for (let i = 0; i < numFirecrackers; i++) {
-                setTimeout(() => {
-                    const x = Math.random() * window.innerWidth;
-                    const y = Math.random() * window.innerHeight;
-                    createFirecracker(x, y);
-                }, i * delayBetween);
-            }
-        }
-
-
-        document.addEventListener('DOMContentLoaded', () => {
-            const urlParams = new URLSearchParams(window.location.search);
-            const sender = urlParams.get('sender');
-
-            if (sender) {
-                document.getElementById('mainContainer').style.display = 'none';
-                document.getElementById('greetingCard').style.display = 'block';
-                document.getElementById('displaySenderName').textContent = `${decodeURIComponent(sender)}`;
-                document.title = `${decodeURIComponent(sender)} మీకు దీపావళి శుభాకాంక్షలు తెలియజేస్తున్నారు!`;
-
-                generateConfetti();
-                generateFireflies();
-                triggerMultipleFirecrackers();
-            } else {
-                document.getElementById('mainContainer').style.display = 'block';
-                document.getElementById('greetingCard').style.display = 'none';
-                generateFireflies();
-            }
-        });
-
-        // Function to handle sharing using Web Share API
-        async function shareGreeting(userName) {
-            const currentUrl = window.location.origin + window.location.pathname;
-            const shareableLink = `${currentUrl}?sender=${encodeURIComponent(userName)}`;
-            const whatsappMessage = encodeURIComponent(`${userName} మీకు దీపావళి శుభాకాంక్షలు పంపారు! ఈ లింక్‌ని క్లిక్ చేసి చూడండి:\n${shareableLink}`);
-            const whatsappShareUrl = `https://wa.me/?text=${whatsappMessage}`;
-
-            document.getElementById('whatsappShareLink').href = whatsappShareUrl;
-            document.getElementById('shareLinkContainer').style.display = 'flex';
-            document.getElementById('shareLink').textContent = shareableLink; // Keep for fallback
-            document.getElementById('copiedMessage').style.display = 'none';
-
-            if (navigator.share) {
-                try {
-                    await navigator.share({
-                        title: 'దీపావళి శుభాకాంక్షలు!', // Diwali Wishes!
-                        text: `${userName} మీకు దీపావళి శుభాకాంక్షలు పంపారు! ఈ లింక్‌ని క్లిక్ చేసి చూడండి:`, // "[Name] sent you Diwali wishes! Click this link to see:"
-                        url: shareableLink,
-                    });
-                    console.log('Shared successfully');
-                } catch (error) {
-                    console.error('Error sharing:', error);
-                    // Keep WhatsApp button visible as primary share option
-                }
-            } else {
-                // Keep WhatsApp button visible as primary share option
-                alert('మీ బ్రౌజర్ షేర్ ఎంపికకు మద్దతు ఇవ్వదు. WhatsApp ద్వారా షేర్ చేయడానికి పైన ఉన్న బటన్‌ను ఉపయోగించండి.'); // Your browser does not support share option. Please use the button above to share via WhatsApp.
-            }
-        }
-
-        async function shareNewGreeting(recipientName) {
-            const currentUrl = window.location.origin + window.location.pathname;
-            const newShareableLink = `${currentUrl}?sender=${encodeURIComponent(recipientName)}`;
-            const whatsappMessage = encodeURIComponent(`${recipientName} మీకు దీపావళి శుభాకాంక్షలు పంపారు! ఈ లింక్‌ని క్లిక్ చేసి చూడండి:\n${newShareableLink}`);
-            const whatsappShareUrl = `https://wa.me/?text=${whatsappMessage}`;
-
-            document.getElementById('newWhatsappShareLink').href = whatsappShareUrl;
-            document.getElementById('newShareLinkContainer').style.display = 'flex';
-            document.getElementById('newShareLink').textContent = newShareableLink; // Keep for fallback
-            document.getElementById('newCopiedMessage').style.display = 'none';
-
-            if (navigator.share) {
-                try {
-                    await navigator.share({
-                        title: 'దీపావళి శుభాకాంక్షలు!',
-                        text: `${recipientName} మీకు దీపావళి శుభాకాంక్షలు పంపారు! ఈ లింక్‌ని క్లిక్ చేసి చూడండి:`,
-                        url: newShareableLink,
-                    });
-                    console.log('Shared successfully');
-                } catch (error) {
-                    console.error('Error sharing:', error);
-                    // Keep WhatsApp button visible
-                }
-            } else {
-                // Keep WhatsApp button visible
-                alert('మీ బ్రౌజర్ షేర్ ఎంపికకు మద్దతు ఇవ్వదు. WhatsApp ద్వారా షేర్ చేయడానికి పైన ఉన్న బటన్‌ను ఉపయోగించండి.');
-            }
-        }
-
-        // Modified functions to call shareGreeting
-        async function handleShareInitial() {
-            const userName = document.getElementById('userNameInput').value.trim();
-            if (userName) {
-                await shareGreeting(userName);
-            } else {
-                alert('దయచేసి మీ పేరును నమోదు చేయండి.');
-            }
-        }
-
-        async function handleShareRecipient() {
-            const recipientName = document.getElementById('recipientNameInput').value.trim();
-            if (recipientName) {
-                await shareNewGreeting(recipientName);
-            } else {
-                alert('దయచేసి మీ పేరును నమోదు చేయండి.');
-            }
-        }
-
-        function copyLink() {
-            const linkText = document.getElementById('shareLink').textContent;
-            navigator.clipboard.writeText(linkText).then(() => {
-                const message = document.getElementById('copiedMessage');
-                message.style.display = 'block';
-                setTimeout(() => {
-                    message.style.display = 'none';
-                }, 2000);
-            }).catch(err => {
-                console.error('Failed to copy text: ', err);
-                ale
+</body>
+</html>
